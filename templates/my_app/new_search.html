@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+<div >
+    <div>
+        <h5 style="text-align: center;"> Search results for "{{search | title }}"</h5>
+    </div>
+    <br>
+    <!-- (post_title, post_spec, post_upl, post_img, post_url)  -->
+    <div class="row">
+      {% if final_posting %}
+          {% for item in final_posting %}
+              <div class="col s4 m4">
+                <div class="card">
+                    <div class="card-image">
+                      <img src="{{ item.3 }}">
+                      <span class="card-title" >{{ item.0 }} </span>
+                    </div>
+                    <div class="card-content">
+                      <p>{{ item.1 }}</p>
+                      <p>{{ item.2 }}</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="{{ item.4 }}" target="_blank"> Check Out</a>
+                    </div>
+                </div>
+              </div>
+          {% endfor %}
+      {% else %}
+        <h5 style="text-align: center;"> --- </h5>
+      {% endif %}
+    </div>
+</div>
+
+{% endblock content %}
+
